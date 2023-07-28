@@ -14,3 +14,6 @@ SOURCES=src/util.cpp src/main.cpp
 $(TARGET): $(SOURCES)
 	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(SOURCES) -Ihyperscan/src -lhs -Llib/hyperscan/lib/ -o $(TARGET)
+
+clean:
+	rm $(TARGET)
