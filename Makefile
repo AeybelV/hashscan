@@ -1,5 +1,5 @@
 CC= g++
-CFLAGS= -g -Wall -O3
+CFLAGS= -g -fanalyzer -Wall -O3
 CPPSTD=c++17
 SRC_DIR=src/
 BUILD_DIR=build
