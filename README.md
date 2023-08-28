@@ -1,12 +1,14 @@
 # hashscan
 
-hashscan is a utility for identifying hashes and other strings within large files. hashscan utilizes [Intel Hyperscan](https://github.com/intel/hyperscan) for high performance regex pattern matching.
+hashscan is a utility for identifying hashes and other strings within large files. Hashscan utilizes [Intel Hyperscan](https://github.com/intel/hyperscan) for high performance regex pattern matching.
 
 - [hashscan](#hashscan)
   - [Hardware Requirements](#hardware-requirements)
   - [Dependencies](#dependencies)
   - [Building](#building)
   - [Usage](#usage)
+  - [Performance Metrics](#performance-metrics)
+  - [Testing](#testing)
 
 ## Hardware Requirements
 
@@ -68,6 +70,29 @@ You can use hashscan from the command line by
 ```sh
 hashscan <file to scan>
 ```
+## Performance Metrics
+
+The following figures were measured using [Hyperfine](https://github.com/sharkdp/hyperfine) on a Intel i9-13900H @ 5.400 GHz. The file provided is a dataset of 75000 lines for a total of 2.9Mb in size.
+
+```
+Time (mean ± σ):      3.061 s ±  0.103 s    [User: 3.040 s, System: 0.021 s]
+  Range (min … max):    2.750 s …  3.239 s    100 runs
+
+  runs:        100
+  mean:      3.061 s
+  stddev:    0.103 s
+  median:    3.033 s
+  min:       2.750 s
+  max:       3.239 s
+
+  percentiles:
+     P_05 .. P_95:    2.919 s .. 3.178 s
+     P_25 .. P_75:    2.989 s .. 3.149 s  (IQR = 0.160 s)
+```
+
+![Hyperfine Histogram](./doc/histogram.png)
+![Hyperfine Whisker Plot](./doc/whisker.png)
+![Hyperfine Progression Plot](./doc/progression.png)
 
 ## Testing
 
