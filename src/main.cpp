@@ -41,9 +41,8 @@ int main(int argc, char *argv[]){
     constexpr size_t num_patterns = (sizeof(patterns)/sizeof(const char**))-1;
     constexpr auto pattern_ids = Pattern_ID<num_patterns>();
     constexpr auto pattern_flags = Pattern_Flags<num_patterns>();
-
     // Compiles the patterns to hyperscan database. In the future we should compile the database beforehand and serialize it rather than compiling all the time.
-    if (hs_compile_multi(patterns, pattern_flags.flags, pattern_ids.id_list, 1, HS_MODE_BLOCK,NULL,&database,
+    if (hs_compile_multi(patterns, pattern_flags.flags, pattern_ids.id_list, num_patterns, HS_MODE_BLOCK,NULL,&database,
                     &compile_err) != HS_SUCCESS) {
             fprintf(stderr, "ERROR: Unable to compile patterns: %s", compile_err->message);
     hs_free_compile_error(compile_err);
@@ -76,7 +75,6 @@ int main(int argc, char *argv[]){
         hs_free_database(database);
         return -1;
     }
-
 
     hs_free_database(database);
     return 0;
