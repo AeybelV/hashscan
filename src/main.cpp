@@ -11,6 +11,8 @@
 
 #include <hs.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <errno.h>
 #include <iostream>
 #include <string_view>
@@ -27,7 +29,7 @@ static int eventHandler(unsigned int id, unsigned long long from,
                         unsigned long long to, unsigned int flags, void *ctx) {
     std::string_view str((char*) ctx); 
     std::cout << "\e[0m\e[1;34m" << str.substr(from,(to-from)) << std::endl;
-    std::cout << "\t\e[0m\e[4;31mType:\e[0m\e[1;32m " << hash_names[id] << "\n\n" << std::endl;
+    std::cout << "\t\e[0m\e[4;31mType:\e[0m\e[1;32m " << pattern_labels[id] << "\n\n" << std::endl;
     return 0;
 }
 

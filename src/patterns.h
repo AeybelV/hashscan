@@ -11,7 +11,7 @@ const char *patterns[] = {
 };
 
 // Used for output, the index in this array matches up with index of patterns
-const char *hash_names[]={
+const char *pattern_labels[]={
     "MD5",
     "SHA256"
 };
