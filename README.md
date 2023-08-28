@@ -74,7 +74,7 @@ hashscan <file to scan>
 You can run tests for the supported patterns by running the python scripts in the `test` folder. These will generate a textfile that can be passed to hashscan. For example, to test SHA256
 
 ```sh 
-python3 test/sha256/generate_sha256.py 
+python3 test/sha256/generate_sha256.py >> test/sha256/sha256_.txt 
 hashscan test/sha256/sha256_test.txt
 ```
 
